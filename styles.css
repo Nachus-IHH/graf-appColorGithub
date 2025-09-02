@@ -1,0 +1,149 @@
+/* Estilos del selector de colores */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text-gradient {
+  background: linear-gradient(45deg, #ff6b6b, #5f27cd, #1dd1a1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.preview {
+  width: 100%;
+  max-width: 300px;
+  height: 220px;
+  background: #808080;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+.preview:hover {
+  transform: scale(1.02);
+}
+
+input[type="range"] {
+  height: 6px;
+  border-radius: 5px;
+  appearance: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+}
+
+.slider-red::-webkit-slider-runnable-track {
+  background: #ff6b6b;
+}
+.slider-green::-webkit-slider-runnable-track {
+  background: #1dd1a1;
+}
+.slider-blue::-webkit-slider-runnable-track {
+  background: #54a0ff;
+}
+
+.slider-red::-moz-range-track {
+  background: #ff6b6b;
+}
+.slider-green::-moz-range-track {
+  background: #1dd1a1;
+}
+.slider-blue::-moz-range-track {
+  background: #54a0ff;
+}
+
+#copyBtn {
+  transition: transform 0.2s ease;
+}
+#copyBtn:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos de la lupa de píxeles */
+#image-container {
+  max-width: 100%;
+  max-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #555;
+  background-color: #333;
+}
+
+/* Estilo general del cursor */
+#imageCanvas {
+  cursor: crosshair; /* Cruz para precisión */
+}
+
+/* Lupa moderna */
+#magnifier {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  background-repeat: no-repeat;
+  pointer-events: none;
+  background-color: #111;
+  display: none;
+  z-index: 20;
+  transition: transform 0.05s ease-out;
+}
+
+/* Cuadrícula dentro de la lupa */
+#magnifier::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 12px 12px;
+  z-index: 1;
+}
+
+/* Pixel objetivo en el centro */
+#magnifier::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border: 2px solid red;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+
+/* Estilos para el aviso de copiado */
+.copy-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1000;
+}
+
+.copy-alert.show {
+  opacity: 1;
+}
